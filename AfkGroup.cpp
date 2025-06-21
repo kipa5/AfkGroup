@@ -111,3 +111,13 @@ int hitungPendapatan(Tiket* head) {
     }
     return total;
 }
+
+// Menambahkan hapus semua data atau tiket
+void hapusSemua(Tiket*& head) {
+    while (head != nullptr) {
+        Tiket* temp = head;
+        head = head->next;
+        delete temp;
+    }
+    cout << "\nSemua data tiket telah dihapus.\n";
+}
