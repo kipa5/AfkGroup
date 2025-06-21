@@ -121,3 +121,99 @@ void hapusSemua(Tiket*& head) {
     }
     cout << "\nSemua data tiket telah dihapus.\n";
 }
+
+// Menambahkan fungsi utama
+int main() {
+    Tiket* daftarTiket = nullptr;
+    int pilihan;
+    string nama, judul;
+    int jumlah, harga;
+    char input;
+
+    do {
+        clearScreen();
+        cout << "==============================";
+        cout << "\n===== MENU TIKET BIOSKOP =====";
+        cout << "\n==============================\n";
+        cout << "1. Daftar Film Dan Harga\n";
+        cout << "2. Pesan Tiket\n";
+        cout << "3. Lihat Daftar Pesanan Tiket\n";
+        cout << "4. Batalkan Tiket Yang Dipesan\n";
+        cout << "5. Hitung Total Pendapatan\n";
+        cout << "6. Hapus Semua Data Tiket\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih Menu: ";
+        cin >> pilihan;
+        cin.ignore();
+
+        switch (pilihan) {
+            case 1:
+                clearScreen();
+                tampilkanFilmSedangTayang();
+                cout << "\nTekan 'q' untuk kembali ke menu utama...";
+                while ((input = getch()) != 'q');
+                break;
+            case 2:
+                clearScreen();
+                tampilkanFilmSedangTayang();
+                cout << "\nNama Pemesan: ";
+                getline(cin, nama);
+                cout << "Judul Film  : ";
+                getline(cin, judul);
+                cout << "Jumlah Tiket: ";
+                cin >> jumlah;
+                cout << "Harga Tiket : Rp";
+                cin >> harga;
+                tambahTiket(daftarTiket, nama, judul, jumlah, harga);
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+                break;
+            case 3:
+                clearScreen();
+                tampilkanTiket(daftarTiket);
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+                break;
+            case 4:
+                clearScreen();
+                cout << "Masukkan Nama Pemesan : ";
+                getline(cin, nama);
+                cout << "Masukkan judul film  : ";
+                getline(cin, judul);
+                hapusTiket(daftarTiket, nama, judul);
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+                break;
+            case 5:
+                clearScreen();
+                cout << "Total pendapatan : Rp" << hitungPendapatan(daftarTiket) << endl;
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+                break;
+            case 6:
+                clearScreen();
+                hapusSemua(daftarTiket);
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+                break;
+            case 0:
+                clearScreen();
+                cout << "\nTerima kasih telah menggunakan sistem ini.\n";
+                cout << "===========================================";
+                cout << "\nNama Kelompok : Group AFK";
+                cout << "\n================================";
+                cout << "\nNama Anggota : ";
+                cout << "\nMuhammad Aditya Ariyandi C030324129\n";
+                cout << "Muhammad Faris Ryadinnor C030324085\n";
+                cout << "Muhammad Jawamiul Khairi C030324089\n";
+                break;
+            default:
+                clearScreen();
+                cout << "\nPilihan tidak valid.\n";
+                cout << "\nTekan 'q' untuk kembali ke menu...";
+                while ((input = getch()) != 'q');
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
