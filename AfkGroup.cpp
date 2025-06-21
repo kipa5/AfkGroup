@@ -101,3 +101,13 @@ void hapusTiket(Tiket*& head, string nama, string judul) {
 
     cout << "\nTiket atas nama \"" << nama << "\" untuk film \"" << judul << "\" tidak ditemukan.\n";
 }
+
+// Menambahkan hitung total pendapatan
+int hitungPendapatan(Tiket* head) {
+    int total = 0;
+    while (head != nullptr) {
+        total += head->jumlahTiket * head->hargaPerTiket;
+        head = head->next;
+    }
+    return total;
+}
