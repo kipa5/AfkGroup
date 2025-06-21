@@ -53,3 +53,17 @@ void tampilkanTiket(Tiket* head) {
         head = head->next;
     }
 }
+
+// Menambahkan tampilan daftar film dan harga
+void tampilkanFilmSedangTayang() {
+    cout << "===== FILM SEDANG TAYANG =====\n";
+    cout << "1. Jumbo\n";
+    cout << "2. Agak Laen\n";
+    cout << "3. Laskar Pelangi\n";
+    cout << "4. Dua Garis Biru\n";
+    cout << "5. Kisah Tanah Jawa\n";
+    cout << "6. Habibie dan Ainun\n\n";
+    cout << "========= HARGA TIKET ========\n";
+    cout << "REGULER: Rp. 45.000\n";
+    cout << "PREMIERE: Rp. 70.000\n";
+}
