@@ -22,4 +22,3 @@ struct Tiket {
     int hargaPerTiket;
     Tiket* next;
 };
- 
