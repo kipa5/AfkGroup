@@ -67,3 +67,37 @@ void tampilkanFilmSedangTayang() {
     cout << "REGULER: Rp. 45.000\n";
     cout << "PREMIERE: Rp. 70.000\n";
 }
+
+// Menambahkan hapus sebagian atau semua tiket berdasarkan nama dan judul film
+void hapusTiket(Tiket*& head, string nama, string judul) {
+    Tiket* temp = head;
+    Tiket* prev = nullptr;
+    while (temp != nullptr) {
+        if (temp->namaPembeli == nama && temp->judulFilm == judul) {
+            cout << "\nJumlah tiket yang dipesan : " << temp->jumlahTiket << endl;
+            int jumlahHapus;
+            cout << "Jumlah tiket yang ingin dibatalkan : ";
+            cin >> jumlahHapus;
+            if (jumlahHapus <= 0 || jumlahHapus > temp->jumlahTiket) {
+                cout << "Jumlah tiket tidak valid.\n";
+                return;
+            }
+            if (jumlahHapus == temp->jumlahTiket) {
+                if (prev == nullptr)
+                    head = temp->next;
+                else
+                    prev->next = temp->next;
+                delete temp;
+                cout << "\nSemua tiket atas nama \"" << nama << "\" untuk film \"" << judul << "\" telah dihapus/dibatalkan.\n";
+            } else {
+                temp->jumlahTiket -= jumlahHapus;
+                cout << "\n" << jumlahHapus << " tiket berhasil dibatalkan. Sisa tiket yang dimiliki : " << temp->jumlahTiket << endl;
+            }
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    cout << "\nTiket atas nama \"" << nama << "\" untuk film \"" << judul << "\" tidak ditemukan.\n";
+}
